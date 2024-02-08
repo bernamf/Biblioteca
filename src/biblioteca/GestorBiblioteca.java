@@ -31,10 +31,6 @@ public class GestorBiblioteca {
 	                    GestorPrestamos.run();
 	                    
 	                    break;
-	                case Menu.SALIR:
-	                    
-	                    
-	                    break;
 	                default:
 	                    System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
 	            }
