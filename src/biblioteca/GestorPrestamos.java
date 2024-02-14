@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class GestorPrestamos {
 	
-	public static void run() {
+	public static void run(Scanner scanner) {
 		
-		 Scanner scanner = new Scanner(System.in);
+		 
 	        int opcion;
 	        
 	        do {
 	        	Menu.mostrarMenuPrestamos();
 	            System.out.print("Ingrese su opción: ");
-	            opcion = scanner.nextInt();
+	            opcion = Integer.parseInt(scanner.nextLine());
 	            switch (opcion) {
 	                case Menu.INSERTAR_PRESTAMO:
 	                   
@@ -23,12 +23,16 @@ public class GestorPrestamos {
 	                case Menu.VER_PRESTAMO:
 		                   
 	                    break;
+	                case Menu.SALIR:
+	                	
+	                	break;
+	                    
 	              
 	                default:
 	                    System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
 	            }
-	        } while (opcion != 0);
-	        scanner.close();
+	        } while (opcion != Menu.SALIR);
+	        
 		
 	}
 

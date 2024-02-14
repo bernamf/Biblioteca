@@ -17,18 +17,18 @@ public class GestorBiblioteca {
 	        do {
 	            Menu.mostrarMenuPrincipal();
 	            System.out.print("Ingrese su opción: ");
-	            opcion = scanner.nextInt();
+	            opcion = Integer.parseInt(scanner.nextLine());
 	            switch (opcion) {
 	                case Menu.GESTION_LIBROS:
-	                   GestorLibros.run();
+	                   GestorLibros.run(scanner);
 	                    
 	                    break;
 	                case Menu.GESTION_SOCIOS:
-	                    GestorSocios.run();
+	                    GestorSocios.run(scanner);
 	                    
 	                    break;
 	                case Menu.GESTION_PRESTAMOS:
-	                    GestorPrestamos.run();
+	                    GestorPrestamos.run(scanner);
 	                    
 	                    break;
 	                default:
