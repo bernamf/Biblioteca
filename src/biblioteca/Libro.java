@@ -13,8 +13,8 @@ public class Libro {
 	}
 	
 	
-	public Libro(int id, String titulo, String autor, int num_pag) {
-		this.id = id;
+	public Libro(String titulo, String autor, int num_pag) {
+		
 		this.titulo = titulo;
 		this.autor = autor;
 		this.num_pag = num_pag;

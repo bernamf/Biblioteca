@@ -1,19 +1,24 @@
 package biblioteca;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conectar {
-	private  Connection cn;
-	 
+	protected Connection cn;
+
+	private String host = "localhost";
+	private String bbdd = "biblioteca";
+	private String usuario = "root";
+	private String contrasenia = "";
+
 	public void conectar() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost/biblioteca";
-			cn = (Connection) DriverManager.getConnection(url,"root","");
-			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			this.cn = DriverManager.getConnection("jdbc:mysql://" + host + "/" + bbdd, usuario, contrasenia);
+
+
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al importar Driver");
 			e.printStackTrace();
@@ -22,7 +27,7 @@ public class Conectar {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cerrar() {
 		try {
 			cn.close();

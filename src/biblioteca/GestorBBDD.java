@@ -9,17 +9,19 @@ public class GestorBBDD extends Conectar {
 
     // Constructor
     public GestorBBDD() {
-        
+    	 
     }
 
     // Método para insertar un libro en la base de datos
     public void insertarLibro(Libro libro) {
-        try (
-             PreparedStatement stmt = getCn().prepareStatement("INSERT INTO libros (id, titulo, autor, num_pag) VALUES (?, ?, ?, ?)")) {
-            stmt.setInt(1, libro.getId());
-            stmt.setString(2, libro.getTitulo());
-            stmt.setString(3, libro.getAutor());
-            stmt.setInt(4, libro.getNum_pag());
+    	
+    	String sql= "INSERT INTO libros ( titulo, autor, num_pag) VALUES ( ?, ?, ?)";
+        try {
+             PreparedStatement stmt = cn.prepareStatement(sql);
+            
+            stmt.setString(1, libro.getTitulo());
+            stmt.setString(2, libro.getAutor());
+            stmt.setInt(3, libro.getNum_pag());
             stmt.executeUpdate();
             System.out.println("Libro insertado correctamente.");
         } catch (SQLException e) {
@@ -55,7 +57,7 @@ public class GestorBBDD extends Conectar {
                 String titulo = rs.getString("titulo");
                 String autor = rs.getString("autor");
                 int num_pag = rs.getInt("num_pag");
-                return new Libro(id, titulo, autor, num_pag);
+                return new Libro( titulo, autor, num_pag);
             } else {
                 System.out.println("No se encontró ningún libro con el ID especificado.");
             }
