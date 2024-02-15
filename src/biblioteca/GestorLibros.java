@@ -33,8 +33,12 @@ public class GestorLibros {
 	                	gestorBBDD.conectar();
 	                	gestorBBDD.getLibro(idVer);
 	                	gestorBBDD.cerrar();
+	                    break;                    
+	                case Menu.VER_TODOS_LOS_LIBROS:
+	                	gestorBBDD.conectar();
+	                	gestorBBDD.mostrarTodosLosLibros();
+	                	gestorBBDD.cerrar();
 	                    break;
-	                    
 	                case Menu.SALIR:
 	                	
 	                	break;

@@ -73,5 +73,31 @@ public class GestorBBDD extends Conectar {
         }
         return libro; // Devolver el objeto Libro, que puede ser null si no se encuentra ningún libro con el ID especificado
     }
+    
+    
+ // Método para obtener todos los libros de la base de datos 
+    public void mostrarTodosLosLibros() {
+    	
+        try (
+             PreparedStatement stmt = getCn().prepareStatement("SELECT * FROM libros");
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titulo = rs.getString("titulo");
+                String autor = rs.getString("autor");
+                int num_pag = rs.getInt("num_pag");
+                Libro libro = new Libro(id, titulo, autor, num_pag);
+                System.out.println(libro);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener los libros de la base de datos.");
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
+
+
 }
 

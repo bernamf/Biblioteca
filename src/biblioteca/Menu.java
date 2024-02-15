@@ -8,9 +8,11 @@ public class Menu {
 	public static final int GESTION_SOCIOS = 2;
 	public static final int GESTION_PRESTAMOS =3;
 	
+	
 	public static final int INSERTAR_LIBRO=1;
 	public static final int ELIMINAR_LIBRO=2;
 	public static final int VER_LIBRO=3;
+	public static final int VER_TODOS_LOS_LIBROS=4;
 	
 	public static final int INSERTAR_SOCIO=1;
 	public static final int ELIMINAR_SOCIO=2;
@@ -32,6 +34,7 @@ public class Menu {
         System.out.println(INSERTAR_LIBRO +". Insertar libro");
         System.out.println(ELIMINAR_LIBRO +". Eliminar libro");
         System.out.println(VER_LIBRO +". Ver libros");
+        System.out.println(VER_TODOS_LOS_LIBROS +". Ver todos los libros");
         System.out.println(SALIR + ". Volver al menú principal");
     }
 
