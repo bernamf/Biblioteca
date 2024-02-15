@@ -15,7 +15,7 @@ public class GestorLibros {
 	            opcion = Integer.parseInt(scanner.nextLine());
 	            switch (opcion) {
 	                case Menu.INSERTAR_LIBRO:
-	                   
+	                	
 	                    break;
 	                case Menu.ELIMINAR_LIBRO:
 		                   
