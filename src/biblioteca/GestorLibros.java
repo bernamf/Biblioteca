@@ -23,13 +23,16 @@ public class GestorLibros {
 	                	gestorBBDD.cerrar();
 	                    break;
 	                case Menu.ELIMINAR_LIBRO:
-	                	int idEliminar = pedirDatosLibroParaEliminar(scanner);
+	                	int idEliminar = FormulariosDeDatos.pedirDatosLibroParaEliminar(scanner);
 	                	gestorBBDD.conectar();
 	                	gestorBBDD.eliminarLibro(idEliminar);
 	                	gestorBBDD.cerrar();
 	                    break;
 	                case Menu.VER_LIBRO:
-	                	//verLibro();
+	                	int idVer = FormulariosDeDatos.pedirDatosLibroParaVer(scanner);
+	                	gestorBBDD.conectar();
+	                	gestorBBDD.getLibro(idVer);
+	                	gestorBBDD.cerrar();
 	                    break;
 	                    
 	                case Menu.SALIR:
@@ -51,13 +54,9 @@ public class GestorLibros {
 
 
 	
-	//private static void verLibro() {
-		//int id;
-	//	GestorBBDD gb = new GestorBBDD();
-    //	ArrayList<Libro> libros = gb.getLibro(id);
-    //	Visor.mostrarLibros(libros);
+	
 		
-	//}
+	
 	
 	
 	

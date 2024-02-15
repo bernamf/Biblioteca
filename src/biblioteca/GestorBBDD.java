@@ -49,6 +49,7 @@ public class GestorBBDD extends Conectar {
 
     // Método para obtener un libro de la base de datos por su ID
     public Libro getLibro(int id) {
+        Libro libro = null; // Inicializar un objeto Libro como null
         try (
              PreparedStatement stmt = getCn().prepareStatement("SELECT * FROM libros WHERE id = ?")) {
             stmt.setInt(1, id);
@@ -57,14 +58,21 @@ public class GestorBBDD extends Conectar {
                 String titulo = rs.getString("titulo");
                 String autor = rs.getString("autor");
                 int num_pag = rs.getInt("num_pag");
-                return new Libro( titulo, autor, num_pag);
+                libro = new Libro(id, titulo, autor, num_pag); // Asignar un nuevo objeto Libro si se encuentra un libro en la base de datos
+                
+                // Imprimir los detalles del libro
+                System.out.println("Libro encontrado:");
+                System.out.println(libro);
             } else {
                 System.out.println("No se encontró ningún libro con el ID especificado.");
+                // En este caso, el objeto libro seguirá siendo null
             }
         } catch (SQLException e) {
             System.out.println("Error al obtener el libro de la base de datos.");
             e.printStackTrace();
         }
-        return null; // Devuelve null si no se encuentra ningún libro con el ID especificado
+        return libro; // Devolver el objeto Libro, que puede ser null si no se encuentra ningún libro con el ID especificado
     }
+
+
 }

@@ -19,6 +19,13 @@ public class Libro {
 		this.autor = autor;
 		this.num_pag = num_pag;
 	}
+	
+public Libro(int id,String titulo, String autor, int num_pag) {
+		this.id = id;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.num_pag = num_pag;
+	}
 	public int getId() {
 		return id;
 	}

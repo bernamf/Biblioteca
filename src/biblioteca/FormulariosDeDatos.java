@@ -34,4 +34,15 @@ public static int pedirDatosLibroParaEliminar(Scanner scanner) {
         
 	}
 	
+
+public static int pedirDatosLibroParaVer(Scanner scanner) {
+	
+	
+    System.out.println("Ingrese el id del libro:");
+    int id = Integer.parseInt(scanner.nextLine());
+ 
+    return id;
+    
+    
+}
 }
