@@ -73,6 +73,5 @@ public class GestorBBDD extends Conectar {
         }
         return libro; // Devolver el objeto Libro, que puede ser null si no se encuentra ningún libro con el ID especificado
     }
-
-
 }
+
