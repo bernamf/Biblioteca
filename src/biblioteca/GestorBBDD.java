@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class GestorBBDD extends Conectar {
 
@@ -76,24 +77,26 @@ public class GestorBBDD extends Conectar {
     
     
  // Método para obtener todos los libros de la base de datos 
-    public void mostrarTodosLosLibros() {
-    	
-        try (
+    
+    public ArrayList<Libro>  consigueTodosLosLibros() {
+    	ArrayList<Libro> libros = new ArrayList<>();
+        try {
              PreparedStatement stmt = getCn().prepareStatement("SELECT * FROM libros");
-             ResultSet rs = stmt.executeQuery()) {
+             ResultSet rs = stmt.executeQuery(); 
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String titulo = rs.getString("titulo");
                 String autor = rs.getString("autor");
                 int num_pag = rs.getInt("num_pag");
                 Libro libro = new Libro(id, titulo, autor, num_pag);
-                System.out.println(libro);
+                libros.add(libro);
             }
+                
         } catch (SQLException e) {
             System.out.println("Error al obtener los libros de la base de datos.");
             e.printStackTrace();
         }
-        
+        return libros;
     }
     
     

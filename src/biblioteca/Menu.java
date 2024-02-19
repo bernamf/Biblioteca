@@ -33,7 +33,7 @@ public class Menu {
         System.out.println("----------Menu Libros---------");
         System.out.println(INSERTAR_LIBRO +". Insertar libro");
         System.out.println(ELIMINAR_LIBRO +". Eliminar libro");
-        System.out.println(VER_LIBRO +". Ver libros");
+        System.out.println(VER_LIBRO +". Ver libro");
         System.out.println(VER_TODOS_LOS_LIBROS +". Ver todos los libros");
         System.out.println(SALIR + ". Volver al menú principal");
     }

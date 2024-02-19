@@ -1,5 +1,6 @@
 package biblioteca;
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,8 +37,9 @@ public class GestorLibros {
 	                    break;                    
 	                case Menu.VER_TODOS_LOS_LIBROS:
 	                	gestorBBDD.conectar();
-	                	gestorBBDD.mostrarTodosLosLibros();
+	                	ArrayList<Libro> todosLosLibros = gestorBBDD.consigueTodosLosLibros();
 	                	gestorBBDD.cerrar();
+	                	Visor.mostrarLibros(todosLosLibros);
 	                    break;
 	                case Menu.SALIR:
 	                	
