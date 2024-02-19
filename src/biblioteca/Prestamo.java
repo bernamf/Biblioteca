@@ -4,34 +4,40 @@ import java.util.Date;
 
 public class Prestamo {
 
-	private int id_libro;
-	private int id_socio;
+	private Libro id_libro;
+	private Socio id_socio;
 	private Date fecha;
 	private boolean devuelto;
 	
-	
-	public Prestamo() {
-
+	public Prestamo() {	
+		
 	}
 	
-	public Prestamo(int id_libro, int id_socio, Date fecha, boolean devuelto) {
+	public Prestamo(Libro id_libro, Socio id_socio, Date fecha, boolean devuelto) {	
 		this.id_libro = id_libro;
 		this.id_socio = id_socio;
 		this.fecha = fecha;
 		this.devuelto = devuelto;
 	}
-	public int getId_libro() {
+	
+	
+	
+	public Libro getId_libro() {
 		return id_libro;
 	}
-	public void setId_libro(int id_libro) {
+
+	public void setId_libro(Libro id_libro) {
 		this.id_libro = id_libro;
 	}
-	public int getId_socio() {
+
+	public Socio getId_socio() {
 		return id_socio;
 	}
-	public void setId_socio(int id_socio) {
+
+	public void setId_socio(Socio id_socio) {
 		this.id_socio = id_socio;
 	}
+
 	public Date getFecha() {
 		return fecha;
 	}
@@ -44,6 +50,7 @@ public class Prestamo {
 	public void setDevuelto(boolean devuelto) {
 		this.devuelto = devuelto;
 	}
+
 	@Override
 	public String toString() {
 		return "Prestamo [id_libro=" + id_libro + ", id_socio=" + id_socio + ", fecha=" + fecha + ", devuelto="

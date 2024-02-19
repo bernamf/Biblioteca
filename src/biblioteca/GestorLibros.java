@@ -41,6 +41,14 @@ public class GestorLibros {
 	                	gestorBBDD.cerrar();
 	                	Visor.mostrarLibros(todosLosLibros);
 	                    break;
+	                    
+	                case Menu.MODIFICAR_LIBRO:
+	                	int idMod = FormulariosDeDatos.pedirDatosLibroParaModificar(scanner);
+	                	gestorBBDD.conectar();
+	                	gestorBBDD.modificarUnLibro(idMod);
+	                	gestorBBDD.cerrar();
+	                	
+	                    break;
 	                case Menu.SALIR:
 	                	
 	                	break;

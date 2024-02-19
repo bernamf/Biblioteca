@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GestorBBDD extends Conectar {
 
@@ -99,7 +100,51 @@ public class GestorBBDD extends Conectar {
         return libros;
     }
     
-    
+    public void modificarUnLibro(int id) {
+        try {
+            // Verificar si el libro con el ID especificado existe en la base de datos
+            try (
+                PreparedStatement stmt = getCn().prepareStatement("SELECT * FROM libros WHERE id = ?");
+            ) {
+                stmt.setInt(1, id);
+                ResultSet rs = stmt.executeQuery();
+                if (!rs.next()) {
+                    System.out.println("No se encontró ningún libro con el ID especificado.");
+                    return; // Salir del método si no se encuentra el libro
+                }
+            }
+
+            // Permitir al usuario ingresar los nuevos detalles del libro
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Ingrese el nuevo título del libro:");
+            String nuevoTitulo = scanner.nextLine();
+            System.out.println("Ingrese el nuevo autor del libro:");
+            String nuevoAutor = scanner.nextLine();
+            System.out.println("Ingrese el nuevo número de páginas del libro:");
+            int nuevoNumPag = Integer.parseInt(scanner.nextLine());
+            
+
+            // Actualizar los detalles del libro en la base de datos utilizando una consulta SQL
+            try (
+                PreparedStatement stmt = getCn().prepareStatement("UPDATE libros SET titulo = ?, autor = ?, num_pag = ? WHERE id = ?");
+            ) {
+                stmt.setString(1, nuevoTitulo);
+                stmt.setString(2, nuevoAutor);
+                stmt.setInt(3, nuevoNumPag);
+                stmt.setInt(4, id);
+                int rowsAffected = stmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("Libro modificado correctamente.");
+                } else {
+                    System.out.println("No se pudo modificar el libro.");
+                }
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Error al modificar el libro en la base de datos.");
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
