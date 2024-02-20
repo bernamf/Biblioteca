@@ -1,15 +1,16 @@
 package biblioteca;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class GestorBiblioteca {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		run();
 
 	}
-	public static void run() {
+	public static void run() throws ParseException {
 		
 		 Scanner scanner = new Scanner(System.in);
 	        int opcion;

@@ -1,12 +1,15 @@
 package biblioteca;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class GestorPrestamos {
 	
-	public static void run(Scanner scanner) {
+	public static void run(Scanner scanner) throws ParseException {
 		
-		 
+		GestorBBDD gestorBBDD = new GestorBBDD(); 
+		
 	        int opcion;
 	        
 	        do {
@@ -15,6 +18,15 @@ public class GestorPrestamos {
 	            opcion = Integer.parseInt(scanner.nextLine());
 	            switch (opcion) {
 	                case Menu.INSERTAR_PRESTAMO:
+	                   String tituloLibro = FormulariosDeDatos.pedirTituloLibro(scanner);
+	                   String DNI = FormulariosDeDatos.pedirDni(scanner);
+	                   Date date = FormulariosDeDatos.pedirFecha(scanner);
+	                   
+	                   
+	                   gestorBBDD.conectar();
+	                   int id_libro =  gestorBBDD.getIdLibroPorTitulo(tituloLibro);
+	                   int id_socio = gestorBBDD.conseguirIdSocio(DNI);
+	                   gestorBBDD.realizarPrestamo(id_libro, id_socio, date , false);
 	                   
 	                    break;
 	                case Menu.ELIMINAR_PRESTAMO:

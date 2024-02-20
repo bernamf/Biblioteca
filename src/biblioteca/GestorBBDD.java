@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conectar {
@@ -144,8 +145,73 @@ public class GestorBBDD extends Conectar {
             e.printStackTrace();
         }
     }
+    
+    
+    public void realizarPrestamo(int idLibro, int idSocio, Date fecha, boolean devuelto) {
+        String sql = "INSERT INTO prestamos (id_libro, id_socio, fecha, devuelto) VALUES (?, ?, ?, ?)";
+        try {
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            
+            stmt.setInt(1, idLibro);
+            stmt.setInt(2, idSocio);
+
+            // Convertir la fecha de util.Date a sql.Date
+            java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+            stmt.setDate(3, fechaSQL);
+            
+            stmt.setBoolean(4, devuelto);
+            stmt.executeUpdate();
+            System.out.println("Préstamo insertado correctamente.");
+        } catch (SQLException e) {
+            System.out.println("Error al insertar el préstamo en la base de datos.");
+            e.printStackTrace();
+        }
+    }
+
+    public int getIdLibroPorTitulo(String titulo) {
+        int id = -1; // Valor predeterminado en caso de que no se encuentre el libro
+        try (
+             PreparedStatement stmt = getCn().prepareStatement("SELECT id FROM libros WHERE titulo = ?");
+        ) {
+            stmt.setString(1, titulo);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("id");
+            } else {
+                System.out.println("No se encontró ningún libro con el título especificado.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el ID del libro en la base de datos.");
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
+    public int conseguirIdSocio(String dni) {
+    	int id = -1; // Valor predeterminado en caso de que no se encuentre el socio
+        try (
+             PreparedStatement stmt = getCn().prepareStatement("SELECT id FROM socios WHERE dni = ?");
+        ) {
+            stmt.setString(1, dni);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("id");
+            } else {
+                System.out.println("No se encontró ningún socio con ese DNI.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el ID del socio en la base de datos.");
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+
+    
+    	
+    }
 
 
 
-}
+
 

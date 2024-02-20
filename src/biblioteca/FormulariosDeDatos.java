@@ -1,5 +1,8 @@
 package biblioteca;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class FormulariosDeDatos {
@@ -55,5 +58,30 @@ public static int pedirDatosLibroParaModificar(Scanner scanner) {
     return id;
     
     
+}
+
+public static String pedirTituloLibro(Scanner scanner) {
+	
+	System.out.println("ingrese el titulo del libro:");
+	String titulo = scanner.nextLine();
+	return titulo;
+	
+}
+
+
+public static String pedirDni(Scanner scanner) {
+	System.out.println("introduce el dni del socio:");
+	String dni = scanner.nextLine();
+	return dni;
+	
+}
+
+public static Date pedirFecha(Scanner scanner) throws ParseException {
+	
+	System.out.println("introduce la fecha del prestamo ( el formato de la fecha tiene que ser asi: dd-MM-yyyy");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	Date date = sdf.parse(scanner.nextLine());
+	return date;
+	
 }
 }
