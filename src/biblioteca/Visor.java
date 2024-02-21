@@ -11,6 +11,14 @@ public class Visor {
             System.out.println(libro);
         }
     }
+    
+ // Método para mostrar todos los prestamos en la lista
+    public static void mostrarPrestamo(ArrayList<Prestamo> prestamos) {
+        System.out.println("Lista de prestamos:");
+        for (Prestamo prestamo : prestamos) {
+            System.out.println(prestamo);
+        }
+    }
 
     // Método para mostrar un libro específico
     public static void mostrarLibro(Libro libro) {

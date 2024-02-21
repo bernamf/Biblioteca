@@ -30,7 +30,11 @@ public class GestorPrestamos {
 	                   
 	                    break;
 	                case Menu.ELIMINAR_PRESTAMO:
-		                   
+		                  int idSocio = FormulariosDeDatos.pedirIdSocio(scanner);
+		                  int idLibro = FormulariosDeDatos.pedirIdLibro(scanner);
+		                  gestorBBDD.conectar();
+		                  gestorBBDD.devolverPrestamo(idSocio, idLibro);
+		                  
 	                    break;
 	                case Menu.VER_PRESTAMO:
 		                   

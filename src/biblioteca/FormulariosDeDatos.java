@@ -84,4 +84,21 @@ public static Date pedirFecha(Scanner scanner) throws ParseException {
 	return date;
 	
 }
+
+public static int pedirIdSocio(Scanner scanner) {
+	
+	System.out.println("introduce el id del socio");
+	int id = Integer.parseInt(scanner.nextLine());
+			return id;
+	
+}
+public static int pedirIdLibro(Scanner scanner) {
+	
+	System.out.println("introduce el id del libro");
+	int id = Integer.parseInt(scanner.nextLine());
+			return id;
+	
+}
+
+
 }

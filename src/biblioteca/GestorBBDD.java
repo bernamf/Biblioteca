@@ -1,6 +1,5 @@
 package biblioteca;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -206,9 +205,31 @@ public class GestorBBDD extends Conectar {
         return id;
     }
 
-
     
-    	
+    public void devolverPrestamo(int idSocio, int idLibro) {
+        try {
+            String consulta = "SELECT * FROM prestamos WHERE id_socio = ? AND id_libro = ? AND devuelto = false";
+            PreparedStatement stmtConsulta = getCn().prepareStatement(consulta);
+            stmtConsulta.setInt(1, idSocio);
+            stmtConsulta.setInt(2, idLibro);
+            ResultSet rs = stmtConsulta.executeQuery();
+
+            if (rs.next()) {
+                int idLibro1 = rs.getInt("id_libro");
+                String updatePrestamo = "UPDATE prestamos SET devuelto = true WHERE id_libro = ?";
+                PreparedStatement stmtUpdate = getCn().prepareStatement(updatePrestamo);
+                stmtUpdate.setInt(1, idLibro1);
+                stmtUpdate.executeUpdate();
+                System.out.println("Préstamo con ID " + idLibro1 + " devuelto correctamente.");
+            } else {
+                System.out.println("El socio no tiene un préstamo activo para este libro.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al devolver el préstamo en la base de datos.");
+            e.printStackTrace();
+        }
+    }
+    
     }
 
 
