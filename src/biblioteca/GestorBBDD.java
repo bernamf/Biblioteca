@@ -230,6 +230,11 @@ public class GestorBBDD extends Conectar {
         }
     }
     
+    
+    
+    
+    
+    
     }
 
 

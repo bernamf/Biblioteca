@@ -9,6 +9,7 @@ public class GestorLibros {
 	public static void run(Scanner scanner) {
 			
 		GestorBBDD gestorBBDD = new GestorBBDD();
+		
 		 
 	        int opcion;
 	        
@@ -49,6 +50,16 @@ public class GestorLibros {
 	                	gestorBBDD.cerrar();
 	                	
 	                    break;
+	                case Menu.BUSCADOR_DE_LIBRO:
+	                	String datoRecibido = FormulariosDeDatos.pedirAlgoDeLibro(scanner);
+	                	gestorBBDD.conectar();
+	                	ArrayList<Libro> todosLosLibros2 = gestorBBDD.consigueTodosLosLibros();
+	                	ArrayList<Libro> array =Filtrar.buscarLinea(todosLosLibros2, datoRecibido);
+	                	Visor.mostrarLibros(array);
+	                	gestorBBDD.cerrar();
+	                	
+	                    break;
+	                    
 	                case Menu.SALIR:
 	                	
 	                	break;

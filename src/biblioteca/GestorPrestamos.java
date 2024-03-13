@@ -27,6 +27,7 @@ public class GestorPrestamos {
 	                   int id_libro =  gestorBBDD.getIdLibroPorTitulo(tituloLibro);
 	                   int id_socio = gestorBBDD.conseguirIdSocio(DNI);
 	                   gestorBBDD.realizarPrestamo(id_libro, id_socio, date , false);
+	                   gestorBBDD.cerrar();
 	                   
 	                    break;
 	                case Menu.ELIMINAR_PRESTAMO:
@@ -34,6 +35,7 @@ public class GestorPrestamos {
 		                  int idLibro = FormulariosDeDatos.pedirIdLibro(scanner);
 		                  gestorBBDD.conectar();
 		                  gestorBBDD.devolverPrestamo(idSocio, idLibro);
+		                  gestorBBDD.cerrar();
 		                  
 	                    break;
 	                case Menu.VER_PRESTAMO:

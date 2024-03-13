@@ -99,6 +99,13 @@ public static int pedirIdLibro(Scanner scanner) {
 			return id;
 	
 }
+public static String pedirAlgoDeLibro(Scanner scanner) {
+	
+	System.out.println("introduce el nombre del autor o el tiulo del libro");
+	String dato = scanner.nextLine();
+	return dato;
+	
+}
 
 
 }
